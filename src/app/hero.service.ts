@@ -17,4 +17,25 @@ export class HeroService {
     this.messageService.add('HeroService: fetched heroes');
     return of(HEROES);
   }
+
+  add(hero:string): void{
+    let _hero= new Hero();
+   _hero.id=190;
+   _hero.name=hero;
+    HEROES.push(_hero);
+  }
+
+  update(hero:Hero): void{
+    var index=HEROES.findIndex((x)=>x.id==hero.id);
+    HEROES[index].name=hero.name;
+    alert('Saved ' + hero.name + ' from service');
+    
+  }
+
+  delete(hero:Hero): void{
+    var index=HEROES.findIndex((x)=>x.id==hero.id);
+    if (index > -1) {
+    HEROES.splice(index, 1);
+}
+  }
 }
